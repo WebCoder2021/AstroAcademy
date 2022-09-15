@@ -9,3 +9,5 @@ def contact (request):
     return render(request,'home/contact.html')
 def gallery (request):
     return render(request,'home/gallery.html')
+def elements(request):
+    return render(request,'elements.html')

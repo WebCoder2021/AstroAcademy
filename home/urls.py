@@ -5,4 +5,6 @@ urlpatterns = [
     path('about', about, name='about'),
     path('contact', contact, name='contact'),
     path('gallery', gallery, name='gallery'),
+    path('elements', elements, name='elements'),
+
 ]
