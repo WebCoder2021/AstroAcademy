@@ -37,50 +37,46 @@
                   <div class="row">
                       <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
                           <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                          </ul>			
+                            <li><a href="https://t.me/astro_academi"><i class="fa fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC6A7CHCixH7aC7WDyFiaRHQ"><i class="fa fa-youtube"></i></a></li>
+                          </ul>
                       </div>
                       <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-                          <a href="tel:+953 012 3654 896"><span class="lnr lnr-phone-handset"></span> <span class="text">+953 012 3654 896</span></a>
-                          <a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span class="text">support@colorlib.com</span></a>			
+                          <a href="tel:+998914007756"><span class="lnr lnr-phone-handset"></span> <span class="text">+998 91 400 77 56</span></a>
+                          <a href="mailto:astro.it.academy@gmail.com "><span class="lnr lnr-envelope"></span> <span class="text">astro.it.academy@gmail.com </span></a>			
                       </div>
-                  </div>			  					
+                  </div>
               </div>
         </div>
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
               <div id="logo">
-                <a href="{% url 'home' %}"><img src="img/logo.png" alt="" title="" /></a>
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" title="" /></a>
               </div>
               <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="{% url 'courses' %}">Courses</a></li>
-                  <li><a href="{% url 'events' %}">Events</a></li>
-                  <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                  <li class="menu-has-children"><a href="">Blog</a>
-                    <ul>
-                      <li><a href="{% url 'blog' %}">Blog Home</a></li>
-                    </ul>
-                  </li>	
+                  <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                  <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+                  <li><a href="{% url 'courses' %}">Kurslar</a></li>
+                  <li><a href="{% url 'events' %}">Yangililar</a></li>
+                  <li><a href="{% url 'gallery' %}">Galereya</a></li>
+                  <li><a href="{% url 'blog' %}">Maqolalar</a></li>
                   <li class="menu-has-children"><a href="">Pages</a>
-                    <ul> 
+                    <ul>
                         <li><a href="{% url 'elements' %}">Elements</a></li>
                           <li class="menu-has-children"><a href="">Level 2 </a>
                             <ul>
                               <li><a href="#">Item One</a></li>
                               <li><a href="#">Item Two</a></li>
                             </ul>
-                          </li>					                		
+                          </li>
                     </ul>
-                  </li>					          					          		          
-                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  </li>
+                  <li><a href="{% url 'contact' %}">Bog'lanish</a></li>
                 </ul>
-              </nav><!-- #nav-menu-container -->		    		
+              </nav><!-- #nav-menu-container -->
             </div>
         </div>
       </header><!-- #header -->

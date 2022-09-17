@@ -25,11 +25,11 @@
 							</div>
 							<div class="jq-tab-wrapper" id="horizontalTab">
 	                            <div class="jq-tab-menu">
-	                                <div class="jq-tab-title active" data-tab="1">Objectives</div>
-	                                <div class="jq-tab-title" data-tab="2">Eligibility</div>
-	                                <div class="jq-tab-title" data-tab="3">Course Outline</div>
-	                                <div class="jq-tab-title" data-tab="4">Comments</div>
-	                                <div class="jq-tab-title" data-tab="5">Reviews</div>
+	                                <div class="jq-tab-title active" data-tab="1">Kurs haqida qisqacha</div>
+	                                <div class="jq-tab-title" data-tab="2">Nega aynan biz</div>
+	                                <div class="jq-tab-title" data-tab="3">Kurs rejasi</div>
+	                                <div class="jq-tab-title" data-tab="4">Izohlar</div>
+	                                <div class="jq-tab-title" data-tab="5">Kurs jadvali</div>
 	                            </div>
 	                            <div class="jq-tab-content-wrapper">
 	                                <div class="jq-tab-content active" data-tab="1">
@@ -54,7 +54,7 @@
 	                                </div>
 	                                <div class="jq-tab-content comment-wrap" data-tab="4">
 						                <div class="comments-area">
-						                    <h4>{{course.comments.count}} Comments</h4>
+						                    <h4>{{course.comments.count}} Izohlar</h4>
 											{% for cm in course.comments.all %}
 						                    <div class="comment-list">
 						                        <div class="single-comment justify-content-between d-flex">
@@ -76,161 +76,36 @@
 						                </div>
 										{% if request.user.is_authenticated %}
 						                <div class="comment-form">
-						                    <h4>Leave a Comment</h4>
+						                    <h4>Izoh qoldirish</h4>
 						                    <form  method="POST"> {% csrf_token %}
 						                        <div class="form-group">
 						                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
 						                        </div>
-						                        <button type="submit" class="genric-btn primary radius">Comment send</button>
+						                        <button type="submit" class="genric-btn primary radius">Yuborish</button>
 						                    </form>
 						                </div>
 										{% endif %}
 	                                </div>
 	                                <div class="jq-tab-content" data-tab="5">
-	                                	<div class="review-top row pt-40">
-	                                		<div class="col-lg-3">
-	                                			<div class="avg-review">
-	                                				Average <br>
-	                                				<span>5.0</span> <br>
-	                                				(3 Ratings)
-	                                			</div>
-	                                		</div>
-	                                		<div class="col-lg-9">
-	                                			<h4 class="mb-20">Provide Your Rating</h4>
-	                                			<div class="d-flex flex-row reviews">
-	                                				<span>Quality</span>
-													<div class="star">
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
+	                                	<div class="section-top-border">
+											<h3 class="mb-30">Dars jadvali</h3>
+											<div class="progress-table-wrap">
+												<div class="progress-table" style="padding: 10px; min-width:max-content">
+													<div class="table-head">
+														<div class="country">Guruh</div>
+														<div class="country">Hafta kuni</div>
+														<div class="country">Vaqt</div>
 													</div>
-	                                				<span>Outstanding</span>
-	                                			</div>
-	                                			<div class="d-flex flex-row reviews">
-	                                				<span>Puncuality</span>
-													<div class="star">
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
+													{% for c in course.schedule %}
+													<div class="table-row">
+														<div class="country">{{c.group_number}}-guruh</div>
+														<div class="country"> {{c.week.name|title}}</div>
+														<div class="country">{{c.time|date:"H:i"}}</div>
 													</div>
-	                                				<span>Outstanding</span>
-	                                			</div>
-	                                			<div class="d-flex flex-row reviews">
-	                                				<span>Quality</span>
-													<div class="star">
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star checked"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div>
-	                                				<span>Outstanding</span>
-	                                			</div>
-	                                		</div>
-	                                	</div>
-	                                	<div class="feedeback">
-	                                		<h4 class="pb-20">Your Feedback</h4>
-	                                		<textarea name="feedback" class="form-control" cols="10" rows="10"></textarea>
-	                                		<a href="#" class="mt-20 primary-btn text-right text-uppercase">Submit</a>
-	                                	</div>
-						                <div class="comments-area mb-30">
-						                    <div class="comment-list">
-						                        <div class="single-comment single-reviews justify-content-between d-flex">
-						                            <div class="user justify-content-between d-flex">
-						                                <div class="thumb">
-						                                    <img src="{% static 'img/blog/c1.jpg' %}" alt="">
-						                                </div>
-						                                <div class="desc">
-						                                    <h5><a href="#">Emilly Blunt</a>
-															<div class="star">
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star"></span>
-																<span class="fa fa-star"></span>
-															</div>
-						                                    </h5>
-						                                    <p class="comment">
-						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
-						                                    </p>
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>  
-						                    <div class="comment-list">
-						                        <div class="single-comment single-reviews justify-content-between d-flex">
-						                            <div class="user justify-content-between d-flex">
-						                                <div class="thumb">
-						                                    <img src="{% static 'img/blog/c2.jpg' %}" alt="">
-						                                </div>
-						                                <div class="desc">
-						                                    <h5><a href="#">Elsie Cunningham</a>
-															<div class="star">
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star"></span>
-																<span class="fa fa-star"></span>
-															</div>
-						                                    </h5>
-						                                    <p class="comment">
-						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
-						                                    </p>
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>   
-						                    <div class="comment-list">
-						                        <div class="single-comment single-reviews justify-content-between d-flex">
-						                            <div class="user justify-content-between d-flex">
-						                                <div class="thumb">
-						                                    <img src="{% static 'img/blog/c3.jpg' %}" alt="">
-						                                </div>
-						                                <div class="desc">
-						                                    <h5><a href="#">Maria Luna</a>
-															<div class="star">
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star"></span>
-																<span class="fa fa-star"></span>
-															</div>
-						                                    </h5>
-						                                    <p class="comment">
-						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
-						                                    </p>
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>  
-						                    <div class="comment-list">
-						                        <div class="single-comment single-reviews justify-content-between d-flex">
-						                            <div class="user justify-content-between d-flex">
-						                                <div class="thumb">
-						                                    <img src="{% static 'img/blog/c4.jpg' %}" alt="">
-						                                </div>
-						                                <div class="desc">
-						                                    <h5><a href="#">Maria Luna</a>
-															<div class="star">
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star checked"></span>
-																<span class="fa fa-star"></span>
-																<span class="fa fa-star"></span>
-															</div>
-						                                    </h5>
-						                                    <p class="comment">
-						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
-						                                    </p>
-						                                </div>
-						                            </div>
-						                        </div>
-						                    </div>  						                                                                      
-						                </div>	                                	
+													{% endfor %}
+												</div>
+											</div>
+										</div>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -239,17 +114,17 @@
 							<ul>
 								<li>
 									<img src="{{course.trainer.image.url}}" alt="" style="width: 100%; object-fit:cover; border-radius:3px">
-									<p>Trainer’s Name</p>
+									<p style="font-weight: 900;"> Mentor</p>
 									<span class="or">{{course.trainer.user.get_full_name}}</span>
 								</li>
 								<li>
 									<a class="justify-content-between d-flex" href="#">
-										<p>Course Fee </p>
+										<p>Kurs narxi </p>
 										<span>{{course.sale}}</span>
 									</a>
 								</li>
 							</ul>
-							<a href="#" class="primary-btn text-uppercase">Enroll the course</a>
+							<a href="#" class="primary-btn text-uppercase">Kursga yozilish</a>
 						</div>
 					</div>
 				</div>
