@@ -6,9 +6,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Popular Courses		
+								Bizning kurslar
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="courses.html"> Popular Courses</a></p>
+							<p class="text-white link-nav"><a href="{% url 'home' %}">Bosh sahifa </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'courses'%}"> Kurslar</a></p>
 						</div>	
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 													</div>
 													{% for c in course.schedule %}
 													<div class="table-row">
-														<div class="country">{{c.group_number}}-guruh</div>
+														<div class="country">{{c.group.name}}</div>
 														<div class="country"> {{c.week.name|title}}</div>
 														<div class="country">{{c.time|date:"H:i"}}</div>
 													</div>
@@ -124,7 +124,19 @@
 									</a>
 								</li>
 							</ul>
-							<a href="#" class="primary-btn text-uppercase">Kursga yozilish</a>
+							<br><hr><br>
+							<div class="search-course-right">
+								<form class="form-wrap" action="#" method="POST"> {% csrf_token %}
+									<h4 class="text-center mb-30">Kursga yozilish uchun 👇🏻</h4>
+									{% if msg_succses %}
+									<h6 style="color: #3ff" class="pb-20">Siz bizning kursga yozildingiz, tez orada administrator siz bilan bog'lanadi</h6>
+									{% endif %}
+									<input type="text" class="form-control mb-30" name="name" placeholder="FIO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'FIO'" >
+									<input type="phone" class="form-control mb-30" name="phone" placeholder="Telefon raqamingiz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefon raqamingiz'" >
+									<input type="email" class="form-control mb-30" name="email" placeholder="Email pochta" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email pochta'" >
+									<button class="primary-btn text-uppercase mb-30" type="submit">Kursga yozilish</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -137,122 +149,39 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
-								<h1 class="mb-10">Popular Courses we offer</h1>
-								<p>There is a moment in the life of any aspiring.</p>
+								<h1 class="mb-10">Biz taklif qiladigan mashhur kurslar</h1>
+								<p>Agar siz hayotdagi maqsadingizni aniqlamagan bo'lsangiz, unda siz unga ega bo'lgan odam uchun ishlaysiz</p>
 							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="single-popular-carusel col-lg-3 col-md-6">
-							<div class="thumb-wrap relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>	
-									<img class="img-fluid" src="{% static 'img/p1.jpg' %}" alt="">
-								</div>
-								<div class="meta d-flex justify-content-between">
-									<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>35</p>
-									<h4>$150</h4>
-								</div>									
-							</div>
-							<div class="details">
-								<a href="#">
-									<h4>
-										Learn Designing
-									</h4>
-								</a>
-								<p>
-									When television was young, there was a hugely popular show based on the still popular fictional characte										
-								</p>
-							</div>
-						</div>	
-						<div class="single-popular-carusel col-lg-3 col-md-6">
-							<div class="thumb-wrap relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>	
-									<img class="img-fluid" src="{% static 'img/p2.jpg' %}" alt="">
-								</div>
-								<div class="meta d-flex justify-content-between">
-									<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>35</p>
-									<h4>$150</h4>
-								</div>									
-							</div>
-							<div class="details">
-								<a href="#">
-									<h4>
-										Learn React js beginners
-									</h4>
-								</a>
-								<p>
-									When television was young, there was a hugely popular show based on the still popular fictional characte										
-								</p>
-							</div>
-						</div>	
-						<div class="single-popular-carusel col-lg-3 col-md-6">
-							<div class="thumb-wrap relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>	
-									<img class="img-fluid" src="{% static 'img/p3.jpg' %}" alt="">
-								</div>
-								<div class="meta d-flex justify-content-between">
-									<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>35</p>
-									<h4>$150</h4>
-								</div>									
-							</div>
-							<div class="details">
-								<a href="#">
-									<h4>
-										Learn Photography
-									</h4>
-								</a>
-								<p>
-									When television was young, there was a hugely popular show based on the still popular fictional characte										
-								</p>
-							</div>
-						</div>	
-						<div class="single-popular-carusel col-lg-3 col-md-6">
-							<div class="thumb-wrap relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>	
-									<img class="img-fluid" src="{% static 'img/p4.jpg' %}" alt="">
-								</div>
-								<div class="meta d-flex justify-content-between">
-									<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>35</p>
-									<h4>$150</h4>
-								</div>									
-							</div>
-							<div class="details">
-								<a href="#">
-									<h4>
-										Learn Surveying
-									</h4>
-								</a>
-								<p>
-									When television was young, there was a hugely popular show based on the still popular fictional characte										
-								</p>
-							</div>
-						</div>							
-						<a href="#" class="primary-btn text-uppercase mx-auto">Load More Courses</a>													
-					</div>
-				</div>	
-			</section>
-			<!-- End popular-courses Area -->					
-
-			<!-- Start cta-two Area -->
-			<section class="cta-two-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 cta-left">
-							<h1>Not Yet Satisfied with our Trend?</h1>
-						</div>
-						<div class="col-lg-4 cta-right">
-							<a class="primary-btn wh" href="#">view our blog</a>
 						</div>
 					</div>
+					<div class="row">
+						{% for course in courses %}
+						<div class="single-popular-carusel col-lg-3 col-md-6">
+							<div class="thumb-wrap relative">
+								<div class="thumb relative">
+									<div class="overlay overlay-bg"></div>	
+									<img class="img-fluid" src="{{course.image.url}}" alt="">
+								</div>
+								<div class="meta d-flex justify-content-between">
+									<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>{{course.comments.count}}</p>
+									<h4>{{course.sale}}</h4>
+								</div>
+							</div>
+							<div class="details">
+								<a href="{% url 'course_detail' course.slug %}">
+									<h4>
+										{{course.name}}
+									</h4>
+								</a>
+								<p>{{course.sub_title}}</p>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<div style="display: flex; justify-content:center"><a href="{% url 'courses' %}" class="primary-btn text-uppercase mx-auto">Barcha kurslarni ko'rish</a></div>
 				</div>	
 			</section>
-			<!-- End cta-two Area -->						    			
-
-			<!-- start footer Area -->		
+			<!-- End popular-courses Area -->
 			{% endblock %}
 			{% block script %}
 {% endblock %}

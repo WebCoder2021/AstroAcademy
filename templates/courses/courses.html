@@ -6,9 +6,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Popular Courses		
+								Bizning kurslar
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="courses.html"> Popular Courses</a></p>
+							<p class="text-white link-nav"><a href="{% url 'home' %}">Bosh sahifa </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'courses'%}"> Kurslar</a></p>
 						</div>	
 					</div>
 				</div>
@@ -21,8 +21,8 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
-								<h1 class="mb-10">Popular Courses we offer</h1>
-								<p>There is a moment in the life of any aspiring.</p>
+								<h1 class="mb-10">Biz taklif qiladigan mashhur kurslar</h1>
+								<p>Pulni maqsad qilib qo'ymang. Siz faqat o'zingiz yoqtirgan biznesda muvaffaqiyatga erisha olasiz. Bu hayotda o'zingiz yaxshi ko'rgan narsalarga boring va buni shunday yaxshi bajaringki, atrofingizdagilar sizdan ko'zlarini uzmasin</p>
 							</div>
 						</div>
 					</div>
@@ -61,45 +61,47 @@
 					<div class="row justify-content-between align-items-center">
 						<div class="col-lg-6 col-md-6 search-course-left">
 							<h1 class="text-white">
-								Get reduced fee <br>
-								during this Summer!
+								Bizda albatta to'lov uchun <br>
+								qaynoq chegirmalar mavjud
 							</h1>
-							<p>
-								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+							<p class="text-white">
+								O'zingiz bilan 5+ do'stingizni o'quv markazimizga o'qishga taklif qiling va har bir kurs uchun maxsus chegirmani qo'lga kiriting
 							</p>
 							<div class="row details-content">
 								<div class="col single-detials">
 									<span class="lnr lnr-graduation-hat"></span>
-									<a href="#"><h4>Expert Instructors</h4></a>		
+									<a href="#"><h4>Mutaxassis murabbiylar</h4></a>
 									<p>
-										Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-									</p>						
+										Muvaffaqiyatni taqdirning sovg'asi sifatida qabul qiling, muvaffaqiyatsizlik esa harakat etishmasligi sifatida
+									</p>
 								</div>
 								<div class="col single-detials">
 									<span class="lnr lnr-license"></span>
-									<a href="#"><h4>Certification</h4></a>		
+									<a href="#"><h4>Sertifikatlash</h4></a>
 									<p>
-										Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-									</p>						
-								</div>								
+										Agar siz urinib ko'rsangiz, sizda ikkita variant bor: muvaffaqiyatli yoki muvaffaqiyatsiz. Agar urinmasangiz, faqat bitta variant bor
+									</p>
+								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6 search-course-right section-gap">
-							<form class="form-wrap" action="#">
-								<h4 class="text-white pb-20 text-center mb-30">Search for Available Course</h4>		
-								<input type="text" class="form-control" name="name" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'" >
-								<input type="phone" class="form-control" name="phone" placeholder="Your Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Phone Number'" >
-								<input type="email" class="form-control" name="email" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'" >
+							<form class="form-wrap" action="#" method="POST"> {% csrf_token %}
+								<h4 class="text-white pb-20 text-center mb-30">Bizning kurslarga yozilish</h4>
+								{% if msg_succses %}
+								<h6 style="color: #3ff" class="pb-20">Siz bizning kursga yozildingiz, tez orada administrator siz bilan bog'lanadi</h6>
+								{% endif %}
+								<input type="text" class="form-control" name="name" placeholder="FIO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'FIO'" >
+								<input type="phone" class="form-control" name="phone" placeholder="Telefon raqamingiz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefon raqamingiz'" >
+								<input type="email" class="form-control" name="email" placeholder="Email pochta" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email pochta'" >
 								<div class="form-select" id="service-select">
-									<select>
-										<option datd-display="">Choose Course</option>
-										<option value="1">Course One</option>
-										<option value="2">Course Two</option>
-										<option value="3">Course Three</option>
-										<option value="4">Course Four</option>
+									<select name="course">
+										<option datd-display="">Kursni tanlang</option>
+										{% for c in courses %}
+										<option value="{{c.id}}">{{c.name}}</option>
+										{% endfor %}
 									</select>
-								</div>									
-								<button class="primary-btn text-uppercase">Submit</button>
+								</div>
+								<button class="primary-btn text-uppercase" type="submit">Yuborish</button>
 							</form>
 						</div>
 					</div>
@@ -113,111 +115,31 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
-								<h1 class="mb-10">Upcoming Events of our Institute</h1>
-								<p>If you are a serious astronomy fanatic like a lot of us</p>
+								<h1 class="mb-10">Akademiyamizdagi so'nggi yangiliklar</h1>
+								<p>Ishoning, qo'lingizdan keladi va yo'lning yarmi allaqachon o'tib ketgan</p>
 							</div>
 						</div>
-					</div>								
+					</div>
 					<div class="row">
 						<div class="active-upcoming-event-carusel">
+							{% for event in events %}
 							<div class="single-carusel row align-items-center">
 								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e1.jpg" alt="">
+									<img class="img-fluid" src="{{event.image.url}}" alt="">
 								</div>
 								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
+									<p>{{event.created|date:'H:i d-m-Y'}}</p>
+									<a href="#"><h4>{{event.title}}</h4></a>
 									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
+										{{event.sub_title}}
 									</p>
 								</div>
 							</div>
-							<div class="single-carusel row align-items-center">
-								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e2.jpg" alt="">
-								</div>
-								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
-									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
-									</p>
-								</div>
-							</div>	
-							<div class="single-carusel row align-items-center">
-								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e1.jpg" alt="">
-								</div>
-								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
-									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
-									</p>
-								</div>
-							</div>	
-							<div class="single-carusel row align-items-center">
-								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e1.jpg" alt="">
-								</div>
-								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
-									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
-									</p>
-								</div>
-							</div>
-							<div class="single-carusel row align-items-center">
-								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e2.jpg" alt="">
-								</div>
-								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
-									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
-									</p>
-								</div>
-							</div>	
-							<div class="single-carusel row align-items-center">
-								<div class="col-12 col-md-6 thumb">
-									<img class="img-fluid" src="img/e1.jpg" alt="">
-								</div>
-								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
-									<a href="#"><h4>The Universe Through
-									A Child S Eyes</h4></a>
-									<p>
-										For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.
-									</p>
-								</div>
-							</div>																						
+							{% endfor %}
 						</div>
 					</div>
 				</div>	
-			</section>
-			<!-- End upcoming-event Area -->				
-
-			<!-- Start cta-two Area -->
-			<section class="cta-two-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 cta-left">
-							<h1>Not Yet Satisfied with our Trend?</h1>
-						</div>
-						<div class="col-lg-4 cta-right">
-							<a class="primary-btn wh" href="#">view our blog</a>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End cta-two Area -->						    			
+			</section>				    			
 
 			<!-- start footer Area -->		
 			{% endblock %}

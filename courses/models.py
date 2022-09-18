@@ -1,3 +1,4 @@
+import re
 from django.db import models
 from ckeditor.fields import RichTextField
 from users.models import CustomUser
@@ -23,7 +24,7 @@ class Course(models.Model):
         comment = Schedule.objects.filter(course__slug=self.slug)
         return comment
     def __str__(self):
-        return self.name
+        return self.name + ' - ' + str(self.trainer.user.first_name)
 
 class Course_outline(models.Model):
     order = models.IntegerField()
@@ -47,16 +48,38 @@ class WeekDay(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+class OurGroup(models.Model):
+    name = models.CharField(max_length=250,unique=True)
+    oreder = models.PositiveSmallIntegerField()
+    started = models.DateTimeField(null=True, blank=True)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
+    master = models.ForeignKey(Master, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 class Schedule(models.Model):
     time = models.TimeField()
-    group_number = models.IntegerField()
+    group = models.ForeignKey(OurGroup, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     order = models.IntegerField()
     week = models.ForeignKey(WeekDay, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.course.name
+
+
+
+class EnrollCourse(models.Model):
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=100)
+    email = models.CharField(max_length=100,blank=True,null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    talked = models.BooleanField(default=False)
+    rejected = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 
 

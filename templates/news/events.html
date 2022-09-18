@@ -2,19 +2,18 @@
 			<!-- start banner Area -->
 			<section class="banner-area relative about-banner" id="home">	
 				<div class="overlay overlay-bg"></div>
-				<div class="container">				
+				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Events				
-							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="events.html"> Events</a></p>
-						</div>	
+								Yangiliklar
+							</h1>
+							<p class="text-white link-nav"><a href="{% url 'home' %}">Bosh sahifa </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'events' %}"> Yangiliklar</a></p>
+						</div>
 					</div>
 				</div>
 			</section>
-			<!-- End banner Area -->	
-				
+			<!-- End banner Area -->
 			<!-- Start events-list Area -->
 			<section class="events-list-area section-gap event-page-lists">
 				<div class="container">
@@ -26,7 +25,7 @@
 									<img class="img-fluid" src="{{event.image.url}}" alt="">
 								</div>
 								<div class="detials col-12 col-md-6">
-									<p>25th February, 2018</p>
+									<p>{{event.created|date:'H:i d-m-Y'}}</p>
 									<a href="{% url 'event_detail' event.slug %}"><h4>{{event.title}}</h4></a>
 									<p>
 										{{event.sub_title}}
@@ -35,27 +34,10 @@
 							</div>
 						</div>
 						{% endfor %}
-						<a href="#" class="text-uppercase primary-btn mx-auto mt-40">Load more courses</a>		
 					</div>
-				</div>	
+				</div>
 			</section>
 			<!-- End events-list Area -->
-				
-
-			<!-- Start cta-two Area -->
-			<section class="cta-two-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 cta-left">
-							<h1>Not Yet Satisfied with our Trend?</h1>
-						</div>
-						<div class="col-lg-4 cta-right">
-							<a class="primary-btn wh" href="#">view our blog</a>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End cta-two Area -->						    			
 
 			{% endblock %}
 			{% block script %}
