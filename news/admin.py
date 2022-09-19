@@ -6,13 +6,13 @@ admin.site.register(Tag)
 admin.site.register(PostCategory)
 admin.site.register(PostTag)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ["id","title"]
+    list_display = ["id","title",'sub_title']
     list_display_links = ('id',"title")
     prepopulated_fields = {'slug':('title',),}
     save_as = True
     group_fieldsets = True
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["id","title"]
+    list_display = ["id","title",'sub_title']
     list_display_links = ('id',"title")
     prepopulated_fields = {'slug':('title',),}
     save_as = True
