@@ -6,7 +6,7 @@
 					<div class="row fullscreen d-flex align-items-center justify-content-between">
 						<div class="banner-content col-lg-9 col-md-12">
 							<h1 class="text-uppercase">
-								BIZ YAXSHI DUNYO UCHUN YAXSHI TA'LIMNI TA'MINLAYMIZ			
+								BIZ YAXSHI DUNYO UCHUN YAXSHI TA'LIMNI TA'MINLAYMIZ
 							</h1>
 							<p class="pt-10 pb-10">
 								O'zingiz orzu qilgan kishi bo'lishingiz uchun hech qachon kech emas
@@ -73,7 +73,7 @@ qilishgina kishini maqsadiga eltadi
 								<p>Agar sen biror narsani o‘ylab topa olsang, uni bajarishga ham qodirsan.</p>
 							</div>
 						</div>
-					</div>						
+					</div>
 					<div class="row">
 						<div class="active-popular-carusel">
 							{% for course in courses %}
@@ -86,7 +86,7 @@ qilishgina kishini maqsadiga eltadi
 									<div class="meta d-flex justify-content-between">
 										<p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>{{course.comments.count}}</p>
 										<h4>{{course.sale}}</h4>
-									</div>									
+									</div>
 								</div>
 								<div class="details">
 									<a href="{% url 'course_detail' course.slug %}">
@@ -95,11 +95,11 @@ qilishgina kishini maqsadiga eltadi
 										</h4>
 									</a>
 									<p>
-										{{course.sub_title}}										
+										{{course.sub_title}}
 									</p>
 								</div>
 							</div>	
-							{% endfor %}						
+							{% endfor %}
 						</div>
 					</div>
 				</div>	

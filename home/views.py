@@ -43,7 +43,6 @@ def about (request):
             new_student.save()
             context['msg_succses'] = True
 
-    
     return render(request,'home/about.html',context)
 
 def contact (request):
@@ -66,3 +65,6 @@ def gallery (request):
     return render(request,'home/gallery.html',context)
 def elements(request):
     return render(request,'elements.html')
+
+def bad_request(request,exception=None):
+    return render(request,'404.html')
