@@ -5,7 +5,7 @@
   <!-- Mobile Specific Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Favicon-->
-  <link rel="shortcut icon" href="img/fav.png">
+  <link rel="shortcut icon" href="{% static 'logo.png' %}">
   <!-- Author Meta -->
   <meta name="author" content="colorlib">
   <!-- Meta Description -->
@@ -15,7 +15,7 @@
   <!-- meta character set -->
   <meta charset="UTF-8">
   <!-- Site Title -->
-  <title>Education</title>
+  <title>ASTRO Academy</title>
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
   <!--
@@ -60,14 +60,14 @@
     <div class="container main-menu">
       <div class="row align-items-center justify-content-between d-flex">
         <div id="logo">
-          <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" title="" /></a>
+          <a href="{% url 'home' %}" style="font-weight: 900;color: #fff;font-size: 16px;"><img src="{% static 'logo.png' %}" alt="" width="30" title="" />      ASTRO ACADEMY</a>
         </div>
         <nav id="nav-menu-container">
           <ul class="nav-menu">
             <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
             <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
             <li><a href="{% url 'courses' %}">Kurslar</a></li>
-            <li><a href="{% url 'events' %}">Yangililar</a></li>
+            <li><a href="{% url 'events' %}">Yangiliklar</a></li>
             <li><a href="{% url 'gallery' %}">Galereya</a></li>
             <li><a href="{% url 'blog' %}">Maqolalar</a></li>
             <li><a href="{% url 'contact' %}">Bog'lanish</a></li>
@@ -117,7 +117,7 @@
           <div class="single-footer-widget">
             <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
               <div id="logo">
-                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" title="" /></a>
+                <a href="{% url 'home' %}" style="font-weight: 900;color: #fff;font-size: 16px;"><img src="{% static 'logo.png' %}" alt="" width="30" title="" />      ASTRO ACADEMY</a>
               </div><br>
               <a href="tel:+998914007756" style="color:#777"><span class="lnr lnr-phone-handset"></span> <span class="text">+998 91 400 77
                   56</span></a> <br>
@@ -132,7 +132,6 @@
             <ul>
               <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
               <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
-              <li><a href="{% url 'elements' %}">Elements</a></li>
             </ul>
           </div>
         </div>
