@@ -24,7 +24,7 @@ class Course(models.Model):
         comment = Schedule.objects.filter(course__slug=self.slug)
         return comment
     def __str__(self):
-        return self.name + ' - ' + str(self.trainer.user.first_name)
+        return self.name
 
     class Meta:
         verbose_name = "Bizning kurs"
