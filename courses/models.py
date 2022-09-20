@@ -21,7 +21,7 @@ class Course(models.Model):
         comment = CourseComment.objects.filter(course__slug=self.slug)
         return comment
     def schedule(self):
-        comment = Schedule.objects.filter(course__slug=self.slug)
+        comment = Schedule.objects.filter(group__course__slug=self.slug)
         return comment
     def __str__(self):
         return self.name
