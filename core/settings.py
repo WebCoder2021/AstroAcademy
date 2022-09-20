@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-0f82=prz$4d0z^n0h$veut6r9x5=26wy43e-(5+b17f1s=rgl2
 # DEBUG = True
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['http://astro-academy.uz/','https://astro-academy.uz/','astro-academy.uz','astro-academy.uz/']
 
+CORS_REPLACE_HTTPS_REFERER = True
+
+CSRF_COOKIE_DOMAIN = 'astro-academy.uz'
 
 # Application definition
 
