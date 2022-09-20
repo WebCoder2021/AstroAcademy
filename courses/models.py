@@ -76,7 +76,7 @@ class Schedule(models.Model):
     week = models.ForeignKey(WeekDay, on_delete=models.CASCADE,verbose_name='Hafta kuni')
 
     def __str__(self):
-        return self.course.name
+        return self.group.name
     class Meta:
         verbose_name_plural ='Dars jadvali'
         verbose_name ='Dars jadvali'
