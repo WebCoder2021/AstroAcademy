@@ -8,3 +8,5 @@ class StudentAdmin(admin.ModelAdmin):
     save_as = True
     group_fieldsets = True
 admin.site.register(Student,StudentAdmin)
+admin.site.register(StudentAttendance)
+admin.site.register(GroupDateTime)

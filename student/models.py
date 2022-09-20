@@ -12,3 +12,22 @@ class Student(models.Model):
     class Meta:
         verbose_name_plural = 'O`quvchilar'
         verbose_name = 'O`quvchi'
+
+class GroupDateTime(models.Model):
+    group = models.ForeignKey(OurGroup, on_delete=models.CASCADE)
+    date_time = models.DateTimeField()
+    class Meta:
+        verbose_name_plural = 'Sana va vaqt'
+        verbose_name = 'Sana va vaqt'
+
+    def __str__(self):
+        return str(self.group.name) + ' - ' + str(self.date_time)
+class StudentAttendance(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    days = models.ManyToManyField(GroupDateTime)
+    def __str__(self):
+        return str(self.student.user.first_name)+ ' '+str(self.student.user.last_name)
+
+    class Meta:
+        verbose_name_plural = 'O`quvchi kelmagan sa na va vaqt'
+        verbose_name = 'O`quvchi kelmagan sana va vaqt'

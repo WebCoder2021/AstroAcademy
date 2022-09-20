@@ -292,6 +292,7 @@ JAZZMIN_SETTINGS: Dict[str, Any] = {
         {"name": "Bizning kurslar", "url": "/admin/courses/course/",},
         {"name": "Yangiliklar", "url": "/admin/news/event/",},
         {"name": "Dars jadvali", "url": "/admin/courses/schedule/",},
+        {"name": "Davomat", "url": "https://docs.google.com/spreadsheets/u/0/?tgif=d",},
         {"name": "Bosh sahifa", "url": "/",},
         # external url that opens in a new window (Permissions can be added)
         # model admin to link to (Permissions checked against model)

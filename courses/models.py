@@ -14,7 +14,6 @@ class Course(models.Model):
     eligibility = RichTextField(verbose_name='Nega aynan sizning kursingiz')
     slug = models.SlugField(max_length=500,unique=True, verbose_name='Url manzil')
     order = models.IntegerField(null=True, blank=True, default=0,verbose_name='Kurs tartib raqami')
-    trainer = models.ForeignKey(Master,on_delete=models.CASCADE, null=True)
     def course_outlines(self):
         outlines = Course_outline.objects.filter(course__slug=self.slug)
         return outlines
@@ -73,7 +72,6 @@ class OurGroup(models.Model):
 class Schedule(models.Model):
     time = models.TimeField(verbose_name='Dars boshlanishi')
     group = models.ForeignKey(OurGroup, on_delete=models.CASCADE,verbose_name='Guruh')
-    course = models.ForeignKey(Course, on_delete=models.CASCADE,verbose_name="Kurs")
     order = models.IntegerField(verbose_name='Tartib raqami')
     week = models.ForeignKey(WeekDay, on_delete=models.CASCADE,verbose_name='Hafta kuni')
 
