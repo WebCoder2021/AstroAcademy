@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0f82=prz$4d0z^n0h$veut6r9x5=26wy43e-(5+b17f1s=rgl2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['http://astro-academy.uz','https://astro-academy.uz',' http://astro-academy.uz/',' https://astro-academy.uz/']
 
