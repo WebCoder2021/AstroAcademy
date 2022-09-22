@@ -270,16 +270,16 @@ JAZZMIN_SETTINGS: Dict[str, Any] = {
     # Title on the brand, and login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "Astro Academy",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "logo.jpg",
+    "site_logo": "logo2.png",
     "site_brand": "Astro Academy",
     # Relative path to logo for your site, used for login logo (must be present in static files. Defaults to site_logo)
-    "login_logo": "logo.jpg",
+    "login_logo": "logo2.png",
     # Logo to use for login form in dark themes (must be present in static files. Defaults to login_logo)
-    "login_logo_dark": "logo.jpg",
+    "login_logo_dark": "logo2.png",
     # CSS classes that are applied to the logo
     "site_logo_classes": "brand-image",
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "logo.jpg",
+    "site_icon": "logo.png",
     # Welcome text on the login screen
     "welcome_sign": "Astro academy xodimlar uchun",
     # Copyright on the footer
