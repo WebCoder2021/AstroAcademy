@@ -23,6 +23,8 @@ class Course(models.Model):
     def schedule(self):
         comment = Schedule.objects.filter(group__course__slug=self.slug)
         return comment
+    def trainers(self):
+        return OurGroup.objects.filter(course__slug=self.slug).all()
     def __str__(self):
         return self.name
 
