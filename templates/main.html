@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static %}{% load custom_tags %}
 <html lang="en" class="no-js">
 
 <head>
@@ -75,6 +75,7 @@
                             {% if request.user.is_staff %}
                             <li><a href="{% url 'admin:index' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}}</a>
                               <ul  class="sub-menu" style="padding: 0; width: max-content;">
+                                {% if request.user|has_group:'student' %}<li class="sub-menu-item"><a href="{% url 'student_page' %}">O'quvchi kabineti </a></li>{% endif %}
                                 <li class="sub-menu-item"><a href="{% url 'profile' %}">Sozlamalar </a></li>
                                 <li class="sub-menu-item"><a class="sub-menu-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i>  Chiqish</a></li>
                             </ul>

@@ -67,6 +67,9 @@ class OurGroup(models.Model):
     class Meta:
         verbose_name_plural ='Guruhlar'
         verbose_name ='Guruh'
+    def schedule(self):
+        sch = Schedule.objects.filter(group__name=self.name).all()
+        return sch
     def __str__(self):
         return self.name
 class Schedule(models.Model):
