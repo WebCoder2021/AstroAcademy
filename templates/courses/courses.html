@@ -28,11 +28,11 @@
 					</div>
 					<div class="row">
 						{% for course in courses %}
-						<div class="single-popular-carusel col-lg-3 col-md-6">
+						<div class="single-popular-carusel col-lg-4 col-md-6">
 							<div class="thumb-wrap relative">
 								<div class="thumb relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="{{course.image.url}}" alt="">
+									<img class="img-fluid" src="{{course.image.url}}" style="height:200px; object-fit:cover" alt="">
 								</div><br>
 								<div class="meta d-flex justify-content-between">
 									<!-- <p><span class="lnr lnr-users"></span> 355 <span class="lnr lnr-bubble"></span>35</p>
