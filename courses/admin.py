@@ -6,7 +6,6 @@ admin.site.register(Course_outline)
 admin.site.register(CourseComment)
 admin.site.register(WeekDay)
 admin.site.register(Schedule)
-admin.site.register(EnrollCourse)
 admin.site.register(OurGroup)
 
 class CourseAdmin(admin.ModelAdmin):
@@ -16,3 +15,12 @@ class CourseAdmin(admin.ModelAdmin):
     save_as = True
     group_fieldsets = True
 admin.site.register(Course,CourseAdmin)
+class EnrollCourseAdmin(admin.ModelAdmin):
+    list_display = ["id","name",'phone','email','course','date','talked','rejected']
+    list_display_links = ('id',"name")
+    save_as = True
+    group_fieldsets = True
+    list_filter = ["name",'phone','course','talked','rejected']
+    search_fields = ['name','phone','email','course']
+    list_editable = ['talked','rejected']
+admin.site.register(EnrollCourse,EnrollCourseAdmin)
