@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from courses.models import Course,EnrollCourse
+from master.models import Master
 from news.models import Event,Post
 from .models import *
 # Create your views here.
@@ -8,10 +9,12 @@ def home (request):
     courses = Course.objects.all()
     events = Event.objects.all().order_by('-created')[:6]
     posts = Post.objects.all().order_by('-created')[:4]
+    masters = Master.objects.all()
     context = {
         'courses': courses,
         'events':events,
-        'posts': posts
+        'posts': posts,
+        'masters': masters,
 
     }
     if request.method == 'POST':

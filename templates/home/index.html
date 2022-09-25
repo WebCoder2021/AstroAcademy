@@ -199,17 +199,48 @@ qilishgina kishini maqsadiga eltadi
 					<div class="overlay overlay-bg"></div>
 					<div class="row justify-content-center">
 						<div class="wrap">
-							<h1 class="text-white">Bizning tajribali mentorlarimiz</h1>
+							<h1 class="text-white"></h1>
 							<p>
 								“Eng muhimi, muvaffaqiyatga erishish uchun hech bo'lmaganda biror narsa qilish va buni hozir qilishdir. Bu eng muhim sir - barcha soddaligiga qaramay. Har bir insonning ajoyib g'oyalari bor, lekin kamdan-kam hollarda kimdir ularni amalda qo'llash uchun hech narsa qilmaydi va hozir. Ertaga emas. Bir hafta ichida emas. Hozir"
 							</p>
-							<a class="primary-btn wh" href="#">Tanishish</a>								
-						</div>					
+							<a class="primary-btn wh" href="{% url 'courses' %}">Bizning kurslarga yozilish</a>
+						</div>
 					</div>
-				</div>	
+				</div>
 			</section>
 			<!-- End cta-one Area -->
-
+			<!-- Start upcoming-event Area -->
+			<section class="upcoming-event-area section-gap">
+			  <div class="container">
+				<div class="row d-flex justify-content-center">
+				  <div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+					  <h1 class="mb-10">Bizning tajribali mentorlarimiz</h1>
+					  <p>IT sohasidagi yangi ko'nikmalarni o'zlashtirishni, malaka oshirishni va ko'proq pul ishlashni xohlaysanmi? Biz senga yordam beramiz!</p>
+					</div>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="active-upcoming-event-carusel">
+					{% for ms in masters %}
+					<div class="single-carusel row align-items-center">
+					  <div class="col-12 col-md-6 thumb">
+						<img class="img-fluid" src="{{ms.image.url}}" alt="">
+					  </div>
+					  <div class="detials col-12 col-md-6">
+						<p>{{ms.user.email}}</p>
+						<a href="#"><h4>{{ms.user.get_full_name}}</h4></a>
+						<p>
+						  {{ms.content}}
+						</p>
+					  </div>
+					</div>
+					{% endfor %}
+				  </div>
+				</div>
+			  </div>
+			</section>
+			<!-- End upcoming-event Area -->
 			<!-- Start blog Area -->
 			<section class="blog-area section-gap" id="blog">
 				<div class="container">

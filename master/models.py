@@ -9,6 +9,7 @@ class Master(models.Model):
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
+
     class Meta:
         verbose_name_plural = 'Mentorlar(O`qituvchilar)'
         verbose_name = 'Mentor(O`qituvchi)'
