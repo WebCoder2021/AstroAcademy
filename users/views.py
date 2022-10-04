@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from users.models import CustomUser
-
+from django.contrib.auth import authenticate
 
 # Create your views here.
 def log_in(request):
@@ -14,9 +14,12 @@ def log_in(request):
         password = post.get('password', False)
         user = post.get('user', False)
         if user:
-            user1 = CustomUser.objects.filter(id=user).first()
-            login(request,user1)
-            return redirect('home')
+            user1 = authenticate(request,phone=phone, password=password)
+            # user1 = CustomUser.objects.filter(id=user).first()
+            if user1 is not None:
+                 login(request,user1)
+                 return redirect('home')
+            else: context['error'] = 'Login yoki parol xato'
         else:
             password2 = post.get('password2', False)
             if password == password2:
