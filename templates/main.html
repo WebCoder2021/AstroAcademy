@@ -72,25 +72,27 @@
             <li><a href="{% url 'blog' %}">Maqolalar</a></li>
             <li><a href="{% url 'contact' %}">Bog'lanish</a></li>
             {% if request.user.is_authenticated %}
-                            {% if request.user.is_staff %}
-                            <li><a href="{% url 'admin:index' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}}</a>
+                  {% if request.user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}}</a>
+                          <ul  class="sub-menu" style="padding: 0; width: max-content;">
+                            {% if request.user|has_group:'student' %}<li class="sub-menu-item"><a href="{% url 'student_page' %}">O'quvchi kabineti </a></li>{% endif %}
+                                <li class="sub-menu-item"><a href="{% url 'profile' %}">Sozlamalar </a></li>
+                              <li class="sub-menu-item"><a class="sub-menu-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i>  Chiqish</a></li>
+                          </ul>
+                    </li>
+                    {% else %}
+                       <li>
+                          <a href="{% url 'profile' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}} </a>
                               <ul  class="sub-menu" style="padding: 0; width: max-content;">
                                 {% if request.user|has_group:'student' %}<li class="sub-menu-item"><a href="{% url 'student_page' %}">O'quvchi kabineti </a></li>{% endif %}
                                 <li class="sub-menu-item"><a href="{% url 'profile' %}">Sozlamalar </a></li>
                                 <li class="sub-menu-item"><a class="sub-menu-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i>  Chiqish</a></li>
-                            </ul>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="{% url 'profile' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}} </a>
-                                <ul  class="sub-menu" style="padding: 0; width: max-content;">
-                                    <li class="sub-menu-item"><a class="sub-menu-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i>  Chiqish</a></li>
-                                </ul>
-                            </li>
-                            {% endif %}
-                            {% else %}
-                            <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li>
-                            {% endif %}
+                              </ul>
+                       </li>
+                  {% endif %}
+            {% else %}
+              <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li>
+            {% endif %}
           </ul>
         </nav><!-- #nav-menu-container -->
       </div>
