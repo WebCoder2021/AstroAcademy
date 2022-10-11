@@ -115,7 +115,7 @@
 								<li>
 									<img src="{{course.trainer.image.url}}" alt="" style="width: 100%; object-fit:cover; border-radius:3px">
 									<p style="font-weight: 900;"> Mentor</p>
-									<span class="or">{% for tr in course.trainers.all %} {{tr.master.user.get_full_name}} <br>{% endfor %}</span>
+									<span class="or">{{course.trainers.first.master.user.get_full_name}}</span>
 								</li>
 								<li>
 									<a class="justify-content-between d-flex" href="#">
